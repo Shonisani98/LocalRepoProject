@@ -3,8 +3,8 @@ from django.db import models
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
-    genre = models.CharField(max_length=50)
-    published_date = models.DateField()
+    publication_year = models.IntegerField(default=1900)
+    genre = models.CharField(max_length=100, default="Unknown")  # ← Add this line
 
     def __str__(self):
-        return f"{self.title} by {self.author}"
+        return f"{self.title} by {self.author} ({self.publication_year})"
